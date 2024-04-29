@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ЗАЯВА НА ВСТУП</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .form-container {
+        flex-grow: 1;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    .form-group input, 
+    .form-group select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .form-group input:focus, 
+    .form-group select:focus {
+        outline: none;
+        border-color: #4CAF50;
+    }
+    .form-group input:invalid, 
+    .form-group select:invalid {
+        border-color: red;
+    }
+    .form-group input[type="date"]::-webkit-inner-spin-button,
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+    }
+    .register-button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .register-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
+    .register-button.valid {
+        background-color: #4CAF50;
+    }
+    .survey-container {
+        flex-basis: 300px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .survey-question {
+        margin-bottom: 20px;
+    }
+    .survey-question label {
+        display: block;
+        font-weight: bold;
+    }
+    .survey-options {
+        margin-top: 10px;
+    }
+    .survey-options label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    /* Модальное окно */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        border-radius: 8px;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="form-container">
+        <h2>ЗАЯВА НА ВСТУП</h2>
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="name">ПІБ:</label>
+                <input type="text" id="name" placeholder="Введіть ваше ПІБ" required>
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Дата нарождення:</label>
+                <input type="date" id="birthdate" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Домашня адреса:</label>
+                <input type="text" id="address" placeholder="Введіть вашу домашню адресу" required>
+            </div>
+            <div class="form-group">
+                <label for="workplace">Місце роботи:</label>
+                <input type="text" id="workplace" placeholder="Введіть ваше місце роботи" required>
+            </div>
+            <div class="form-group">
+                <label for="position">Посада:</label>
+                <input type="text" id="position" placeholder="Введіть вашу посаду" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Електронна пошта:</label>
+                <input type="email" id="email" placeholder="Введіть вашу електронну пошту" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Мобільний телефон:</label>
+                <input type="tel" id="phone" placeholder="Введіть ваш мобільний телефон" required>
+            </div>
+        </form>
+    </div>
+    <div class="survey-container">
+        <h2>Опросник</h2>
+        <div class="survey-question">
+            <label>Чи зустрічаєте Ви випадки розладів дихання уві сні у своїй клінічній практиці?</label>
+            <div class="survey-options">
+                <label><input type="radio" name="sleep-disorder" value="yes"> Так</label>
+                <label><input type="radio" name="sleep-disorder" value="no"> Ні</label>
+            </div>
+        </div>
+        <div class="survey-question">
+            <label>Чи підтримуєте Ви створення спеціалізації «Сомнолог» або «Лікар медицини сну»?</label>
+            <div class="survey-options">
+                <label><input type="radio" name="sleep-specialization" value="yes"> Так</label>
+                <label><input type="radio" name="sleep-specialization" value="no"> Ні</label>
+            </div>
+        </div>
+        <div class="survey-question">
+            <label for="personal-data">Дозволяю обробку персональних даних:</label>
+            <input type="checkbox" id="personal-data" required>
+        </div>
+        <div class="survey-question">
+            <label>Платне членство/безкоштовне?</label>
+            <div class="survey-options">
+                <label><input type="radio" name="membership" value="paid"> Платне</label>
+                <label><input type="radio" name="membership" value="free"> Безкоштовне</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button id="register-button" class="register-button" disabled>ЗАРЕЄСТРУВАТИСЯ</button>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Дякуємо за успішну реєстрацію. Очікуйте зворотнього зв'язку найближчим часом.</p>
+    <button id="return-button">Повернутися на сайт</button>
+  </div>
+</div>
+
+<script>
+    const inputs = document.querySelectorAll('.form-group input, .form-group select');
+    const registerButton = document.getElementById('register-button');
+    const modal = document.getElementById('myModal');
+    const returnButton = document.getElementById('return-button');
+    const closeButton = document.querySelector('.close');
+
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            checkFormValidity();
+        });
+    });
+
+    function checkFormValidity() {
+        let isFormValid = true;
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                isFormValid = false;
+            }
+        });
+        const sleepDisorder = document.querySelector('input[name="sleep-disorder"]:checked');
+        const sleepSpecialization = document.querySelector('input[name="sleep-specialization"]:checked');
+        const personalData = document.getElementById('personal-data');
+        const membership = document.querySelector('input[name="membership"]:checked');
+        if (!sleepDisorder || !sleepSpecialization || !personalData.checked || !membership) {
+            isFormValid = false;
+        }
+        if (isFormValid) {
+            registerButton.classList.add('valid');
+            registerButton.disabled = false;
+        } else {
+            registerButton.classList.remove('valid');
+            registerButton.disabled = true;
+        }
+    }
+
+    registerButton.addEventListener('click', function() {
+        if (registerButton.classList.contains('valid')) {
+            // Открытие модального окна
+            modal.style.display = "block";
+        }
+    });
+
+    returnButton.addEventListener('click', function() {
+        // Переход на главную страницу
+        window.location.href = "file:///C:/Users/Александр/Desktop/Сайт медицина/11111111111111.html";
+    });
+
+    closeButton.addEventListener('click', function() {
+        // Закрытие модального окна при нажатии на крестик
+        modal.style.display = "none";
+    });
+
+    window.addEventListener('click', function(event) {
+        // Закрытие модального окна при клике за его пределами
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>
